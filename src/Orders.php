@@ -51,6 +51,6 @@ class Orders
             'marketplace' => $marketplace,
         ];
 
-        return (new Api())->getRequest('POST', $this->getUrlOrders(), $headers, $options);
+        return (new Api())->getRequest($this->getUrlOrders(), $headers, $options);
     }
 }

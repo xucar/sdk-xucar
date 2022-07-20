@@ -4,7 +4,6 @@ namespace Xucar\XucarSdk;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Psr7\Request;
 
 class Api
 {
@@ -17,7 +16,6 @@ class Api
 
 
     /**
-     * @param string $method
      * @param string $url
      * @param string[] $headers
      * @param string[] $body
@@ -25,16 +23,15 @@ class Api
      * @return string
      * @throws GuzzleException
      */
-    public function getRequest(string $method, string $url, array $headers, array $body): string
+    public function getRequest(string $url, array $headers, array $body): string
     {
-        $request = new Request(
-            $method,
-            $url, //TODO URL
-            $headers,
-            $body
-        );
-
-        return $this->client->send($request)->getBody();
+        return $this->client->post(
+            $url,
+            [
+                'headers' => $headers,
+                'form_params' => $body,
+            ]
+        )->getBody();
     }
 
     /**
