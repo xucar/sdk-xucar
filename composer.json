@@ -1,0 +1,15 @@
+{
+    "name": "xucar/xucar-sdk",
+    "autoload": {
+        "psr-4": {
+            "Xucar\\XucarSdk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "DuKe",
+            "email": "josalba@icloud.com"
+        }
+    ],
+    "require": {}
+}
