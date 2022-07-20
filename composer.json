@@ -1,5 +1,5 @@
 {
-    "name": "xucar/xucar-sdk",
+    "name": "xucar/sdk-xucar",
     "autoload": {
         "psr-4": {
             "Xucar\\XucarSdk\\": "src/"
