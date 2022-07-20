@@ -11,5 +11,7 @@
             "email": "josalba@icloud.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=8.0"
+    }
 }
