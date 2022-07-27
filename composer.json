@@ -13,11 +13,11 @@
     ],
     "require": {
         "php": ">=8.0",
-        "guzzlehttp/guzzle": "^7.4",
+        "guzzlehttp/guzzle": "*",
         "symfony/serializer": "*",
-        "doctrine/annotations": "^1.13",
-        "symfony/property-access": "^6.1",
-        "jms/serializer-bundle": "^4.0"
+        "doctrine/annotations": "*",
+        "symfony/property-access": "*",
+        "jms/serializer-bundle": "*"
     }
     ,
     "require-dev": {
