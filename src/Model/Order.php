@@ -2,8 +2,8 @@
 
 namespace Xucar\XucarSdk\Model;
 
-use Symfony\Component\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Type;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 class Order
 {
@@ -27,6 +27,13 @@ class Order
      * @SerializedName("isPrime")
      */
     private bool $isPrime;
+
+    /**
+     * @var bool
+     * @Type("string")
+     * @SerializedName("isBusiness")
+     */
+    private bool $isBusiness;
 
     /**
      * @var string
@@ -71,6 +78,13 @@ class Order
     private string $clientCountry;
 
     /**
+     * @var string
+     * @Type("string")
+     * @SerializedName("clientCity")
+     */
+    private string $clientCity;
+
+    /**
      * @var float
      * @Type("float")
      * @SerializedName("total")
@@ -99,34 +113,47 @@ class Order
     private array $orderProductsModel;
 
     /**
+     * @var string
+     * @Type("string")
+     * @SerializedName("date")
+     */
+    private string $date;
+
+    /**
      * @param string $uuid
      * @param string $reference
      * @param bool $isPrime
+     * @param bool $isBusiness
      * @param string $clientName
      * @param string $clientPhone
      * @param string $clientAddress
      * @param string $clientPostalCode
      * @param string $clientState
      * @param string $clientCountry
+     * @param string $clientCity
      * @param float $total
      * @param float $productsPrice
      * @param float $shippingPrice
      * @param Products[] $orderProductsModel
+     * @param string $date
      */
     public function __construct(
         string $uuid,
         string $reference,
         bool $isPrime,
+        bool $isBusiness,
         string $clientName,
         string $clientPhone,
         string $clientAddress,
         string $clientPostalCode,
         string $clientState,
         string $clientCountry,
+        string $clientCity,
         float $total,
         float $productsPrice,
         float $shippingPrice,
-        array $orderProductsModel
+        array $orderProductsModel,
+        string $date
     ) {
         $this->uuid = $uuid;
         $this->reference = $reference;
@@ -349,5 +376,35 @@ class Order
     public function setOrderProductsModel(array $orderProductsModel): void
     {
         $this->orderProductsModel = $orderProductsModel;
+    }
+
+    public function isBusiness(): bool
+    {
+        return $this->isBusiness;
+    }
+
+    public function setIsBusiness(bool $isBusiness): void
+    {
+        $this->isBusiness = $isBusiness;
+    }
+
+    public function getDate(): string
+    {
+        return $this->date;
+    }
+
+    public function setDate(string $date): void
+    {
+        $this->date = $date;
+    }
+
+    public function getClientCity(): string
+    {
+        return $this->clientCity;
+    }
+
+    public function setClientCity(string $clientCity): void
+    {
+        $this->clientCity = $clientCity;
     }
 }
