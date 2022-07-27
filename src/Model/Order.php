@@ -158,16 +158,19 @@ class Order
         $this->uuid = $uuid;
         $this->reference = $reference;
         $this->isPrime = $isPrime;
+        $this->isBusiness = $isBusiness;
         $this->clientName = $clientName;
         $this->clientPhone = $clientPhone;
         $this->clientAddress = $clientAddress;
         $this->clientPostalCode = $clientPostalCode;
+        $this->clientCity = $clientCity;
         $this->clientState = $clientState;
         $this->clientCountry = $clientCountry;
         $this->total = $total;
         $this->productsPrice = $productsPrice;
         $this->shippingPrice = $shippingPrice;
         $this->orderProductsModel = $orderProductsModel;
+        $this->date = $date;
     }
 
     /**
