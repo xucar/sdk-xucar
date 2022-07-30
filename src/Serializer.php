@@ -34,4 +34,9 @@ class Serializer
     {
         return self::get()->deserialize($data, $type, $format, $context);
     }
+
+    public static function serialize(mixed $data, string $format, array $context = []): string
+    {
+        return self::get()->serialize($data, $format, $context);
+    }
 }

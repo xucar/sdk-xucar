@@ -5,15 +5,8 @@ namespace Xucar\XucarSdk\Model;
 use JMS\Serializer\Annotation\Type;
 use Symfony\Component\Serializer\Annotation\SerializedName;
 
-class Products
+class Products extends ProductBase
 {
-    /**
-     * @var string
-     * @Type("string")
-     * @SerializedName("sku")
-     */
-    private string $sku;
-
     /**
      * @var string
      * @Type("string")
@@ -65,29 +58,14 @@ class Products
         float $shippingPrice,
         float $shippingTax
     ) {
-        $this->sku = $sku;
+        parent::__construct($sku);
+
         $this->asin = $asin;
         $this->quantity = $quantity;
         $this->price = $price;
         $this->tax = $tax;
         $this->shippingPrice = $shippingPrice;
         $this->shippingTax = $shippingTax;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSku(): string
-    {
-        return $this->sku;
-    }
-
-    /**
-     * @param string $sku
-     */
-    public function setSku(string $sku): void
-    {
-        $this->sku = $sku;
     }
 
     /**
