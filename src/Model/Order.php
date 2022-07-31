@@ -24,14 +24,14 @@ class Order
     /**
      * @var bool
      * @Type("bool")
-     * @SerializedName("isPrime")
+     * @SerializedName("prime")
      */
     private bool $isPrime;
 
     /**
      * @var bool
      * @Type("bool")
-     * @SerializedName("isBusiness")
+     * @SerializedName("business")
      */
     private bool $isBusiness;
 
