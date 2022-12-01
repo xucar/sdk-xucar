@@ -7,42 +7,40 @@ use GuzzleHttp\Exception\GuzzleException;
 
 class Api
 {
-    private Client $client;
+    private const BASE_URI = '/api/v1';
 
-    public function __construct()
+    private Client $client;
+    private string $host;
+    private string $token;
+
+    public function __construct(string $host, string $token)
     {
+        $this->host = $host;
+        $this->token = $token;
+
         $this->client = new Client();
     }
 
-
     /**
-     * @param string $url
-     * @param string[] $headers
-     * @param string[] $body
+     * @param string $endpoint
+     * @param string $body
+     * @param array<string, string> $requestHeaders
      *
      * @return string
      * @throws GuzzleException
      */
-    public function getRequest(string $url, array $headers, array $body): string
+    public function getRequest(string $endpoint, string $body, array $requestHeaders = []): string
     {
+        $headers = [
+            'Authorization' => 'Basic '.$this->token,
+        ];
+
         return $this->client->post(
-            $url,
+            $this->host.self::BASE_URI.$endpoint,
             [
-                'headers' => $headers,
-                'form_params' => $body,
+                'headers' => $headers + $requestHeaders,
+                'body' => $body,
             ]
         )->getBody();
-    }
-
-    /**
-     * @param string $token
-     *
-     * @return string[]
-     */
-    public static function getHeaders(string $token): array
-    {
-        return [
-            'x-api-key' => $token,
-        ];
     }
 }

@@ -2,41 +2,25 @@
 
 namespace Xucar\XucarSdk;
 
-use Doctrine\Common\Annotations\AnnotationReader;
-use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
-use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
-use Symfony\Component\Serializer\NameConverter\MetadataAwareNameConverter;
-use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
-use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer as SerializerSymfony;
+use JMS\Serializer\SerializerBuilder;
 
-class Serializer
+final class Serializer
 {
-    public static function get(): SerializerSymfony
+    public const JSON = 'json';
+    public const XML = 'xml';
+
+    public static function get(): \JMS\Serializer\Serializer
     {
-        $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
-        $metadataAwareNameConverter = new MetadataAwareNameConverter($classMetadataFactory);
-
-        $encoders = [new JsonEncoder()];
-        $normalizers = [
-            new ObjectNormalizer($classMetadataFactory, $metadataAwareNameConverter, null, new ReflectionExtractor()),
-            new ArrayDenormalizer(),
-            new GetSetMethodNormalizer(),
-        ];
-
-        return new SerializerSymfony($normalizers, $encoders);
+        return SerializerBuilder::create()->build();
     }
 
-    public static function deserialize(mixed $data, string $type, string $format, array $context = []): mixed
+    public static function deserialize(string $data, string $type): mixed
     {
-        return self::get()->deserialize($data, $type, $format, $context);
+        return self::get()->deserialize($data, $type, self::JSON);
     }
 
-    public static function serialize(mixed $data, string $format, array $context = []): string
+    public static function serialize(mixed $data): string
     {
-        return self::get()->serialize($data, $format, $context);
+        return self::get()->serialize($data, self::JSON);
     }
 }

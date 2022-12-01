@@ -2,120 +2,119 @@
 
 namespace Xucar\XucarSdk\Model;
 
-use JMS\Serializer\Annotation\Type;
-use Symfony\Component\Serializer\Annotation\SerializedName;
+use JMS\Serializer\Annotation as Serializer;
 
-class Order
+class ResponseOrder extends AbstractResponse
 {
     /**
      * @var string
-     * @Type("string")
-     * @SerializedName("uuid")
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("uuid")
      */
     private string $uuid;
 
     /**
      * @var string
-     * @Type("string")
-     * @SerializedName("reference")
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("reference")
      */
     private string $reference;
 
     /**
      * @var bool
-     * @Type("bool")
-     * @SerializedName("prime")
+     * @Serializer\Type("bool")
+     * @Serializer\SerializedName("prime")
      */
     private bool $isPrime;
 
     /**
      * @var bool
-     * @Type("bool")
-     * @SerializedName("business")
+     * @Serializer\Type("bool")
+     * @Serializer\SerializedName("business")
      */
     private bool $isBusiness;
 
     /**
      * @var string
-     * @Type("string")
-     * @SerializedName("clientName")
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("clientName")
      */
     private string $clientName;
 
     /**
      * @var string
-     * @Type("string")
-     * @SerializedName("clientPhone")
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("clientPhone")
      */
     private string $clientPhone;
 
     /**
      * @var string
-     * @Type("string")
-     * @SerializedName("clientAddress")
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("clientAddress")
      */
     private string $clientAddress;
 
     /**
      * @var string
-     * @Type("string")
-     * @SerializedName("clientPostalCode")
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("clientPostalCode")
      */
     private string $clientPostalCode;
 
     /**
      * @var string
-     * @Type("string")
-     * @SerializedName("clientState")
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("clientState")
      */
     private string $clientState;
 
     /**
      * @var string
-     * @Type("string")
-     * @SerializedName("clientCountry")
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("clientCountry")
      */
     private string $clientCountry;
 
     /**
      * @var string
-     * @Type("string")
-     * @SerializedName("clientCity")
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("clientCity")
      */
     private string $clientCity;
 
     /**
      * @var float
-     * @Type("float")
-     * @SerializedName("total")
+     * @Serializer\Type("float")
+     * @Serializer\SerializedName("total")
      */
     private float $total;
 
     /**
      * @var float
-     * @Type("float")
-     * @SerializedName("productsPrice")
+     * @Serializer\Type("float")
+     * @Serializer\SerializedName("productsPrice")
      */
     private float $productsPrice;
 
     /**
      * @var float
-     * @Type("float")
-     * @SerializedName("shippingPrice")
+     * @Serializer\Type("float")
+     * @Serializer\SerializedName("shippingPrice")
      */
     private float $shippingPrice;
 
     /**
-     * @var Products[]
-     * @Type("array<Xucar\XucarSdk\Model\Products>")
-     * @SerializedName("orderProductsModel")
+     * @var ResponseOrderProduct[]
+     * @Serializer\Type("array<Xucar\XucarSdk\Model\ResponseOrderProduct>")
+     * @Serializer\SerializedName("orderProductsModel")
      */
     private array $orderProductsModel;
 
     /**
      * @var string
-     * @Type("string")
-     * @SerializedName("date")
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("date")
      */
     private string $date;
 
@@ -134,10 +133,11 @@ class Order
      * @param float $total
      * @param float $productsPrice
      * @param float $shippingPrice
-     * @param Products[] $orderProductsModel
+     * @param ResponseOrderProduct[] $orderProductsModel
      * @param string $date
      */
     public function __construct(
+        string $requestId,
         string $uuid,
         string $reference,
         bool $isPrime,
@@ -155,6 +155,8 @@ class Order
         array $orderProductsModel,
         string $date
     ) {
+        parent::__construct($requestId);
+
         $this->uuid = $uuid;
         $this->reference = $reference;
         $this->isPrime = $isPrime;
@@ -366,7 +368,7 @@ class Order
     }
 
     /**
-     * @return Products[]
+     * @return ResponseOrderProduct[]
      */
     public function getOrderProductsModel(): array
     {
@@ -374,7 +376,7 @@ class Order
     }
 
     /**
-     * @param Products[] $orderProductsModel
+     * @param ResponseOrderProduct[] $orderProductsModel
      */
     public function setOrderProductsModel(array $orderProductsModel): void
     {

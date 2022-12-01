@@ -1,26 +1,22 @@
 {
-    "name": "xucar/sdk-xucar",
-    "autoload": {
-        "psr-4": {
-            "Xucar\\XucarSdk\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "DuKe",
-            "email": "josalba@icloud.com"
-        }
-    ],
-    "require": {
-        "php": ">=8.0",
-        "guzzlehttp/guzzle": "*",
-        "symfony/serializer": "*",
-        "doctrine/annotations": "*",
-        "symfony/property-access": "*",
-        "jms/serializer-bundle": "*"
+  "name": "xucar/sdk-xucar",
+  "autoload": {
+    "psr-4": {
+      "Xucar\\XucarSdk\\": "src/"
     }
-    ,
-    "require-dev": {
-        "roave/security-advisories": "dev-latest"
+  },
+  "authors": [
+    {
+      "name": "DuKe",
+      "email": "josalba@icloud.com"
     }
+  ],
+  "require": {
+    "php": ">=8.0",
+    "guzzlehttp/guzzle": "*",
+    "jms/serializer-bundle": "*"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  }
 }

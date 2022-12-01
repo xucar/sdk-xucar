@@ -2,54 +2,61 @@
 
 namespace Xucar\XucarSdk\Model;
 
-use JMS\Serializer\Annotation\Type;
-use Symfony\Component\Serializer\Annotation\SerializedName;
+use JMS\Serializer\Annotation as Serializer;
 
-class Products extends ProductBase
+class ResponseOrderProduct extends AbstractResponse
 {
     /**
      * @var string
-     * @Type("string")
-     * @SerializedName("asin")
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("sku")
+     */
+    private string $sku;
+
+    /**
+     * @var string
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("asin")
      */
     private string $asin;
 
     /**
      * @var integer
-     * @Type("integer")
-     * @SerializedName("quantity")
+     * @Serializer\Type("integer")
+     * @Serializer\SerializedName("quantity")
      */
     private int $quantity;
 
     /**
      * @var float
-     * @Type("float")
-     * @SerializedName("price")
+     * @Serializer\Type("float")
+     * @Serializer\SerializedName("price")
      */
     private float $price;
 
     /**
      * @var float
-     * @Type("float")
-     * @SerializedName("tax")
+     * @Serializer\Type("float")
+     * @Serializer\SerializedName("tax")
      */
     private float $tax;
 
     /**
      * @var float
-     * @Type("float")
-     * @SerializedName("shippingPrice")
+     * @Serializer\Type("float")
+     * @Serializer\SerializedName("shippingPrice")
      */
     private float $shippingPrice;
 
     /**
      * @var float
-     * @Type("float")
-     * @SerializedName("shippingTax")
+     * @Serializer\Type("float")
+     * @Serializer\SerializedName("shippingTax")
      */
     private float $shippingTax;
 
     public function __construct(
+        string $requestId,
         string $sku,
         string $asin,
         int $quantity,
@@ -58,8 +65,9 @@ class Products extends ProductBase
         float $shippingPrice,
         float $shippingTax
     ) {
-        parent::__construct($sku);
+        parent::__construct($requestId);
 
+        $this->sku = $sku;
         $this->asin = $asin;
         $this->quantity = $quantity;
         $this->price = $price;
@@ -162,5 +170,15 @@ class Products extends ProductBase
     public function setShippingTax(float $shippingTax): void
     {
         $this->shippingTax = $shippingTax;
+    }
+
+    public function getSku(): string
+    {
+        return $this->sku;
+    }
+
+    public function setSku(string $sku): void
+    {
+        $this->sku = $sku;
     }
 }
