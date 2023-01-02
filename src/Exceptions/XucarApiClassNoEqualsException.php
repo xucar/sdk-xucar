@@ -4,7 +4,7 @@ namespace Xucar\XucarSdk\Exceptions;
 
 use Exception;
 
-final class XucarApiException extends Exception
+final class XucarApiClassNoEqualsException extends Exception
 {
 
 }

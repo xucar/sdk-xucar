@@ -2,7 +2,7 @@
 
 namespace Xucar\XucarSdk\Model;
 
-interface InterfaceApiResponse
+interface InterfaceResponse
 {
     public function getRequestId(): string;
 }

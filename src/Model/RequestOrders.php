@@ -4,7 +4,7 @@ namespace Xucar\XucarSdk\Model;
 
 use JMS\Serializer\Annotation as Serializer;
 
-class RequestOrders extends AbstractRequest
+final class RequestOrders extends AbstractRequest
 {
     /**
      * @Serializer\Type("string")

@@ -4,7 +4,7 @@ namespace Xucar\XucarSdk\Model;
 
 use JMS\Serializer\Annotation as Serializer;
 
-abstract class AbstractResponse implements InterfaceApiResponse
+abstract class AbstractResponse implements InterfaceResponse
 {
     /**
      * @Serializer\Type("string")

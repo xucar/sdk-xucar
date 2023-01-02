@@ -29,13 +29,59 @@ class Api
      * @return string
      * @throws GuzzleException
      */
-    public function getRequest(string $endpoint, string $body, array $requestHeaders = []): string
+    public function getRequestPost(string $endpoint, string $body, array $requestHeaders = []): string
     {
         $headers = [
             'Authorization' => 'Basic '.$this->token,
         ];
 
         return $this->client->post(
+            $this->host.self::BASE_URI.$endpoint,
+            [
+                'headers' => $headers + $requestHeaders,
+                'body' => $body,
+            ]
+        )->getBody();
+    }
+
+    /**
+     * @param string $endpoint
+     * @param string $body
+     * @param array $requestHeaders
+     *
+     * @return string
+     * @throws GuzzleException
+     */
+    public function getRequestGet(string $endpoint, string $body, array $requestHeaders = []): string
+    {
+        $headers = [
+            'Authorization' => 'Basic '.$this->token,
+        ];
+
+        return $this->client->get(
+            $this->host.self::BASE_URI.$endpoint,
+            [
+                'headers' => $headers + $requestHeaders,
+                'body' => $body,
+            ]
+        )->getBody();
+    }
+
+    /**
+     * @param string $endpoint
+     * @param string $body
+     * @param array<string, string> $requestHeaders
+     *
+     * @return string
+     * @throws GuzzleException
+     */
+    public function getRequestPut(string $endpoint, string $body, array $requestHeaders = []): string
+    {
+        $headers = [
+            'Authorization' => 'Basic '.$this->token,
+        ];
+
+        return $this->client->put(
             $this->host.self::BASE_URI.$endpoint,
             [
                 'headers' => $headers + $requestHeaders,

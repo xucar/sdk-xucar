@@ -2,7 +2,7 @@
 
 namespace Xucar\XucarSdk\Model;
 
-class ResponseCreateLabel extends AbstractResponse
+final class ResponseCreateLabel extends AbstractResponse
 {
 
 }

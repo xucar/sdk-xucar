@@ -4,7 +4,7 @@ namespace Xucar\XucarSdk\Model;
 
 use JMS\Serializer\Annotation as Serializer;
 
-class RequestProduct extends AbstractRequest
+final class RequestProduct extends AbstractRequest
 {
     /**
      * @Serializer\Type("string")
@@ -22,31 +22,31 @@ class RequestProduct extends AbstractRequest
      * @Serializer\Type("float")
      * @Serializer\SerializedName("price")
      */
-    private int $price;
+    private float $price;
 
     /**
-     * @Serializer\Type("integer")
+     * @Serializer\Type("float")
      * @Serializer\SerializedName("width")
      */
-    private ?int $width;
+    private ?float $width;
 
     /**
-     * @Serializer\Type("stintegerring")
+     * @Serializer\Type("float")
      * @Serializer\SerializedName("length")
      */
-    private ?int $length;
+    private ?float $length;
 
     /**
-     * @Serializer\Type("integer")
+     * @Serializer\Type("float")
      * @Serializer\SerializedName("heigth")
      */
-    private ?int $height;
+    private ?float $height;
 
     /**
-     * @Serializer\Type("integer")
+     * @Serializer\Type("float")
      * @Serializer\SerializedName("weigth")
      */
-    private ?int $weight;
+    private ?float $weight;
 
     /**
      * @Serializer\Type("integer")
@@ -55,23 +55,32 @@ class RequestProduct extends AbstractRequest
     private int $fulfillmentLatency;
 
     /**
+     * @var RequestProductMarketplace[]
+     * @Serializer\Type("array<Xucar\XucarSdk\Model\RequestProductMarketplace>")
+     * @Serializer\SerializedName("stocks")
+     */
+    private array $marketplaces;
+
+    /**
      * @param string $sku
      * @param int $stock
      * @param float $price
-     * @param int|null $width
-     * @param int|null $length
-     * @param int|null $height
-     * @param int|null $weight
+     * @param float|null $width
+     * @param float|null $length
+     * @param float|null $height
+     * @param float|null $weight
+     * @param RequestProductMarketplace[] $marketplaces
      * @param int $fulfillmentLatency
      */
     public function __construct(
         string $sku,
         int $stock,
         float $price,
-        ?int $width = null,
-        ?int $length = null,
-        ?int $height = null,
-        ?int $weight = null,
+        ?float $width = null,
+        ?float $length = null,
+        ?float $height = null,
+        ?float $weight = null,
+        array $marketplaces = [],
         int $fulfillmentLatency = 3
     ) {
         $this->sku = $sku;
@@ -81,6 +90,7 @@ class RequestProduct extends AbstractRequest
         $this->length = $length;
         $this->height = $height;
         $this->weight = $weight;
+        $this->marketplaces = $marketplaces;
         $this->fulfillmentLatency = $fulfillmentLatency;
     }
 
@@ -99,24 +109,32 @@ class RequestProduct extends AbstractRequest
         return $this->price;
     }
 
-    public function getWidth(): ?int
+    public function getWidth(): ?float
     {
         return $this->width;
     }
 
-    public function getLength(): ?int
+    public function getLength(): ?float
     {
         return $this->length;
     }
 
-    public function getHeight(): ?int
+    public function getHeight(): ?float
     {
         return $this->height;
     }
 
-    public function getWeight(): ?int
+    public function getWeight(): ?float
     {
         return $this->weight;
+    }
+
+    /**
+     * @return RequestProductMarketplace[]
+     */
+    public function getMarketplaces(): array
+    {
+        return $this->marketplaces;
     }
 
     public function getFulfillmentLatency(): int

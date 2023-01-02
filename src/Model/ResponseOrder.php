@@ -4,7 +4,7 @@ namespace Xucar\XucarSdk\Model;
 
 use JMS\Serializer\Annotation as Serializer;
 
-class ResponseOrder extends AbstractResponse
+final class ResponseOrder extends AbstractResponse
 {
     /**
      * @var string

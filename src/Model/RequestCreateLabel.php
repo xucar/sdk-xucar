@@ -4,7 +4,7 @@ namespace Xucar\XucarSdk\Model;
 
 use JMS\Serializer\Annotation as Serializer;
 
-class RequestCreateLabel extends AbstractRequest
+final class RequestCreateLabel extends AbstractRequest
 {
     /**
      * @Serializer\Type("string")
@@ -16,9 +16,9 @@ class RequestCreateLabel extends AbstractRequest
      * @Serializer\Type("string")
      * @Serializer\SerializedName("itemOrderId")
      */
-    private string $itemOrderId;
+    private ?string $itemOrderId = null;
 
-    public function __construct(string $orderId, string $itemOrderId)
+    public function __construct(string $orderId, ?string $itemOrderId)
     {
         $this->orderId = $orderId;
         $this->itemOrderId = $itemOrderId;
@@ -29,7 +29,7 @@ class RequestCreateLabel extends AbstractRequest
         return $this->orderId;
     }
 
-    public function getItemOrderId(): string
+    public function getItemOrderId(): ?string
     {
         return $this->itemOrderId;
     }

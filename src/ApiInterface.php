@@ -2,8 +2,8 @@
 
 namespace Xucar\XucarSdk;
 
-use Xucar\XucarSdk\Model\InterfaceApiResponse;
 use Xucar\XucarSdk\Model\InterfaceRequest;
+use Xucar\XucarSdk\Model\InterfaceResponse;
 
 interface ApiInterface
 {
@@ -12,9 +12,15 @@ interface ApiInterface
     /**
      * @param InterfaceRequest $request
      *
-     * @return array<InterfaceApiResponse>
+     * @return array<InterfaceResponse>
      */
     public function getAll(InterfaceRequest $request): array;
 
-    public function put(InterfaceRequest $request): InterfaceApiResponse;
+    public function get(InterfaceRequest $request): InterfaceResponse;
+
+    public function put(InterfaceRequest $request): InterfaceResponse;
+
+    public function postAll(InterfaceRequest $request): InterfaceResponse;
+
+    public function post(InterfaceRequest $request): InterfaceResponse;
 }

@@ -4,28 +4,28 @@ namespace Xucar\XucarSdk\Model;
 
 use JMS\Serializer\Annotation as Serializer;
 
-class RequestTracking extends AbstractRequest
+final class RequestTracking extends AbstractRequest
 {
     /**
-     * @Serializer\Type("array<Xucar\XucarSdk\Model\RequestTrankingOrder>")
+     * @Serializer\Type("array<Xucar\XucarSdk\Model\RequestTrackingOrder>")
      * @Serializer\SerializedName("orders")
      * @var RequestTrackingOrder[]
      */
-    private array $orders;
+    private array $trackingOrders;
 
     /**
      * @param RequestTrackingOrder[] $orders
      */
     public function __construct(array $orders)
     {
-        $this->orders = $orders;
+        $this->trackingOrders = $orders;
     }
 
     /**
      * @return RequestTrackingOrder[]
      */
-    public function getOrders(): array
+    public function getTrackingOrders(): array
     {
-        return $this->orders;
+        return $this->trackingOrders;
     }
 }

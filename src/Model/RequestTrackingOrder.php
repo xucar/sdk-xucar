@@ -4,7 +4,7 @@ namespace Xucar\XucarSdk\Model;
 
 use JMS\Serializer\Annotation as Serializer;
 
-class RequestTrackingOrder
+final class RequestTrackingOrder
 {
     /**
      * @Serializer\Type("string")

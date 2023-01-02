@@ -3,8 +3,8 @@
 namespace Xucar\XucarSdk;
 
 use Xucar\XucarSdk\Exceptions\XucarApiException;
-use Xucar\XucarSdk\Model\InterfaceApiResponse;
 use Xucar\XucarSdk\Model\InterfaceRequest;
+use Xucar\XucarSdk\Model\InterfaceResponse;
 
 abstract class AbstractApi extends Api implements ApiInterface
 {
@@ -22,10 +22,43 @@ abstract class AbstractApi extends Api implements ApiInterface
     /**
      * @param InterfaceRequest $request
      *
-     * @return InterfaceApiResponse
+     * @return InterfaceResponse
      * @throws XucarApiException
      */
-    public function put(InterfaceRequest $request): InterfaceApiResponse
+    public function get(InterfaceRequest $request): InterfaceResponse
+    {
+        throw new XucarApiException();
+    }
+
+    /**
+     * @param InterfaceRequest $request
+     *
+     * @return InterfaceResponse
+     * @throws XucarApiException
+     */
+    public function put(InterfaceRequest $request): InterfaceResponse
+    {
+        throw new XucarApiException();
+    }
+
+    /**
+     * @param InterfaceRequest $request
+     *
+     * @return InterfaceResponse
+     * @throws XucarApiException
+     */
+    public function postAll(InterfaceRequest $request): InterfaceResponse
+    {
+        throw new XucarApiException();
+    }
+
+    /**
+     * @param InterfaceRequest $request
+     *
+     * @return InterfaceResponse
+     * @throws XucarApiException
+     */
+    public function post(InterfaceRequest $request): InterfaceResponse
     {
         throw new XucarApiException();
     }
